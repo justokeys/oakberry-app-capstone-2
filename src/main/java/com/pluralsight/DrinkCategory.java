@@ -1,4 +1,35 @@
 package com.pluralsight;
 
+import java.math.BigDecimal;
+import java.util.Map;
+
 public enum DrinkCategory {
+    SMOOTHIE("Smoothie", Map.of(Size.SMALL, new BigDecimal("5.00"),
+            Size.MEDIUM, new BigDecimal("6.50"),
+            Size.LARGE, new BigDecimal("8.00"))),
+
+    REFRESHER("Refresher", Map.of(Size.SMALL, new BigDecimal("4.00"),
+            Size.MEDIUM, new BigDecimal("5.50"),
+            Size.LARGE, new BigDecimal("6.60"))),
+
+    BOTTLED_WATER("Waiakea Water", Map.of(Size.SMALL, new BigDecimal("2.50"),
+            Size.LARGE, new BigDecimal("4.00")));
+
+
+    private final Map<Size, BigDecimal> prices;
+    private final String displayName;
+
+    DrinkCategory(String displayName, Map<Size, BigDecimal> prices) {
+        this.prices = prices;
+        this.displayName = displayName;
+
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public BigDecimal priceFor(Size size) {
+        return prices.get(size);
+    }
 }
