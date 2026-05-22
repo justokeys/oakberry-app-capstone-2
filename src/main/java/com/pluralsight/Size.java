@@ -1,12 +1,12 @@
 package com.pluralsight;
- // set the sizer and name of bowl and drink sizes
+ // set the size and name of bowl and drink sizes
 public enum Size {
-    SMALl(12,"Classic"),
+    SMALL(12,"Classic"),
     MEDIUM(16,"Works"),
     LARGE(20,"The Oak");
-// public so every class can see the variables
-    public final int ounces;
-    public final String displayName;
+
+    private final int ounces;
+    private final String displayName;
 
     Size(int ounces, String displayName) {
         this.ounces = ounces;
