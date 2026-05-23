@@ -9,12 +9,12 @@ public enum PremiumCategory {
             Size.LARGE, new BigDecimal("2.00"))),
 
     PROTEIN(Map.of(Size.SMALL, new BigDecimal("2.00"),
-            Size.MEDIUM, new BigDecimal("3.00"),
-            Size.LARGE, new BigDecimal("4.00"))),
+            Size.MEDIUM, new BigDecimal("2.00"),
+            Size.LARGE, new BigDecimal("3.50"))),
 
-    SUPER_FOOD( Map.of(Size.SMALL, new BigDecimal("2.50"),
-            Size.MEDIUM, new BigDecimal("3.00"),
-            Size.LARGE, new BigDecimal("4.50")));
+    SUPER_FOOD( Map.of(Size.SMALL, new BigDecimal("1.50"),
+            Size.MEDIUM, new BigDecimal("2.00"),
+            Size.LARGE, new BigDecimal("3.00")));
 
 
     private final Map<Size, BigDecimal> prices;
