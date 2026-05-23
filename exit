@@ -1,0 +1,49 @@
+[33mcommit 6355451fc50ae5c81f14a2646398fdb330b9448e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: JustinK <productivekeys@gmail.com>
+Date:   Fri May 22 17:58:40 2026 -0500
+
+    feat: add enum layer (Size, BaseType, DrinkCategory, DrinkFlavor, SideType, PremiumCategory) (#2)
+
+[33mcommit ae18a3703c1d2f2b4ec710ff93e8de42fd2264ea[m
+Author: JustinK <productivekeys@gmail.com>
+Date:   Fri May 22 15:22:23 2026 -0500
+
+    change double to Big decimal
+    ADD comments , fix typos
+
+[33mcommit d46d92152d03f9b7aea1c90cc31faecb7ac5605a[m
+Merge: 7cda090 1329cfb
+Author: JustinK <productivekeys@gmail.com>
+Date:   Fri May 22 15:06:58 2026 -0500
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 7cda090817553d74fd46bd2db5f90f00e3cf5b93[m
+Author: JustinK <productivekeys@gmail.com>
+Date:   Fri May 22 15:06:02 2026 -0500
+
+    add Size enum variables
+
+[33mcommit 6266e01557e48e917764f2b5baf64cc9f293e8df[m
+Author: JustinK <productivekeys@gmail.com>
+Date:   Fri May 22 15:03:47 2026 -0500
+
+    add classes enums and csv
+
+[33mcommit 1329cfb89a5d9fca78f3513afed73b5bb7c6ca77[m
+Author: justokeys <167572858+justokeys@users.noreply.github.com>
+Date:   Fri May 22 09:16:44 2026 -0500
+
+    Create README.md
+
+[33mcommit a413bdf50b7d1fc0abff760149c16e3d523a5106[m
+Author: JustinK <productivekeys@gmail.com>
+Date:   Fri May 22 09:05:54 2026 -0500
+
+    Initial commit
+
+[33mcommit 46d94e1cbbef79fc8f6025a155613a9b3db94463[m
+Author: JustinK <productivekeys@gmail.com>
+Date:   Fri May 22 09:04:09 2026 -0500
+
+    initial commit
