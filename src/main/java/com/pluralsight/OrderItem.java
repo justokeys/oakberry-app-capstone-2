@@ -6,5 +6,7 @@ public interface OrderItem {
 
     BigDecimal getPrice();
 
-    String description();
+    String getDescription();
+
+    String getName();
 }
