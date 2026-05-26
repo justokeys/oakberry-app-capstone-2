@@ -4,20 +4,25 @@ import java.math.BigDecimal;
 
 public abstract class Item implements OrderItem {
     private final String name;
-
     private final String sku;
 
-    protected Item(String name, String sku) {
+    private final Size size;
+
+    protected Item(String name, String sku, Size size) {
         this.name = name;
+        this.size = size;
         this.sku = sku;
     }
 
-    abstract String getName();
+    public String getName() {
+        return this.name;
+    }
 
+    public String getSku(){
+        return this.sku;
+    }
 
-    abstract String getSize() ;
-
-
-
-
+    public Size getSize(){
+        return this.size;
+    }
 }
