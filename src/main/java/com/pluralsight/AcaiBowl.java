@@ -2,21 +2,15 @@ package com.pluralsight;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class AcaiBowl extends Item{
 
-    private final ArrayList<Topping> toppings;
+    private final List<Topping> toppings;
     private final BaseType base;
-    private final boolean  hempBoost;
+    private  boolean  hempBoost;
 
-
-    AcaiBowl(Size size, ArrayList<Topping> toppings, BaseType base) {
-        super("Acai bowl", size);
-        this.base = base;
-        this.toppings = new ArrayList<>();
-        this.hempBoost = false;
-    }
     private static final Map<Size,BigDecimal> HEMP_FEES = Map.of(
             Size.SMALL, new BigDecimal("1.00"),
             Size.MEDIUM, new BigDecimal("1.50"),
@@ -29,12 +23,24 @@ public class AcaiBowl extends Item{
             Size.LARGE, new BigDecimal("12.00")
     );
 
+    public void setHempBoost(boolean hempBoost) {
+        this.hempBoost = hempBoost;
+    }
+
+   public AcaiBowl(Size size, BaseType base) {
+        super("Acai Bowl", size);
+        this.base = base;
+        this.toppings = new ArrayList<>();
+        this.hempBoost = false;
+    }
+
+
 
     public BaseType getBase() {
         return base;
     }
 
-    public ArrayList<Topping> getToppings() {
+    public List<Topping> getToppings() {
         return toppings;
     }
     public void addTopping(Topping topping){
@@ -56,15 +62,26 @@ public class AcaiBowl extends Item{
         }
         return total;
     }
-
-    @Override
-    public String getDescription() {
-        return "";
-    }
-
-    public boolean getHempBoost() {
+    public boolean isHempBoost() {
         return hempBoost;
     }
+    @Override
+    public String getDescription() {
+        StringBuilder aBowl = new StringBuilder();
+        aBowl.append(getSize()).append(" ").append(getName()).append(" ").append("(").append(base.getAcaiBase()).append(")");
+        for (Topping topping : toppings) {
+            aBowl.append("\n + ").append(topping.getName());
+        }
+
+        if (hempBoost) {
+            aBowl.append("\n +  ").append("Hemp Seed Boost");
+        }
+
+
+        return aBowl.toString();
+    }
+
+
 
 
 
