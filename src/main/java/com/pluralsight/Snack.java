@@ -4,17 +4,18 @@ import java.math.BigDecimal;
 
 public class Snack extends Item{
 
-    public Snack(String name, BigDecimal price, String sku) {
-        super(name, price, sku);
+
+    protected Snack(String name, String sku, Size size) {
+        super(name, sku, size);
+    }
+
+    @Override
+    public BigDecimal getPrice() {
+        return null;
     }
 
     @Override
     public String getDescription() {
-        return "";
-    }
-
-    @Override
-    public String name() {
         return "";
     }
 }
