@@ -2,14 +2,14 @@ package com.pluralsight;
 
 import java.math.BigDecimal;
 
-public class RegularTopping extends Topping {
-    public RegularTopping( String name) {
+public class Condiment extends Topping{
+    public Condiment( String name) {
         super(name);
-    }
 
+    }
 
     @Override
     BigDecimal getPriceForSize(Size size) {
-        return BigDecimal.ZERO;
+        return null;
     }
 }

@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public class Drink extends Item {
 
-    protected Drink(String name, String sku, Size size) {
-        super(name, sku, size);
+    protected Drink(String name, Size size) {
+        super(name, size);
     }
 
     @Override

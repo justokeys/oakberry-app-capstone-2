@@ -2,11 +2,11 @@ package com.pluralsight;
 
 import java.math.BigDecimal;
 
-public class Snack extends Item{
+public class Side extends Item{
 
 
-    protected Snack(String name, String sku, Size size) {
-        super(name, sku, size);
+    protected Side(String name, Size size) {
+        super(name, size);
     }
 
     @Override
