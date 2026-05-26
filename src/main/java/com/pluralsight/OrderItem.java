@@ -8,5 +8,5 @@ public interface OrderItem {
 
     String getDescription();
 
-    String getName();
+    String name();
 }

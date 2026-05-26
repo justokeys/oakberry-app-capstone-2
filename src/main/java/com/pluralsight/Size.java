@@ -4,7 +4,8 @@ package com.pluralsight;
 public enum Size {
     SMALL(12, "Classic", "Small"),
     MEDIUM(16, "Works", "Medium"),
-    LARGE(20, "The Oak", "Large");
+    LARGE(20, "The Oak", "Large"),
+    NONE(0,"","");
 
     private final int ounces;
     private final String displayName;
