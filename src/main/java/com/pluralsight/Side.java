@@ -6,7 +6,7 @@ public class Side extends Item{
     private SideType type;
 
 
-    private Side(SideType type) {
+    public Side(SideType type) {
         super("Side", Size.NONE);
         this.type = type;
     }
