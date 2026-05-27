@@ -7,7 +7,8 @@ public class OakberryApp {
 
         AcaiBowl bowl = new AcaiBowl(Size.MEDIUM, BaseType.STANDARD);
         bowl.addTopping(new RegularTopping("Strawberry"));
-        bowl.addTopping(new Condiment("Honey"));
+        bowl.addTopping(new RegularTopping("Honey"));
+        bowl.addTopping(new PremiumTopping("I*M*8",PremiumCategory.SUPERFOOD));
         bowl.setHempBoost(true);
 
         System.out.println(bowl.getDescription());

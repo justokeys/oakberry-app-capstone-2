@@ -5,8 +5,9 @@ public enum PremiumToppingMenu {
     WHEY_PROTEIN("Whey Protein", PremiumCategory.PROTEIN),
     VEGAN_PROTEIN("Vegan Protein", PremiumCategory.PROTEIN),
     PISTACHIO_DRIZZLE("Pistachio Drizzle", PremiumCategory.NUT_BUTTER),
-    HAZELNUT_DRIZZLE("Hazelnut Drizzle", PremiumCategory.NUT_BUTTER);
-    IM8
+    HAZELNUT_DRIZZLE("Hazelnut Drizzle", PremiumCategory.NUT_BUTTER),
+    IM8_ULTIMATE("I*M*8",PremiumCategory.SUPERFOOD);
+
 
     private final String displayName;
     private final PremiumCategory category;
