@@ -2,7 +2,6 @@ package com.pluralsight;
 
 import java.math.BigDecimal;
 import java.util.Map;
-
 public enum PremiumCategory {
     NUT_BUTTER(Map.of(Size.SMALL, new BigDecimal("1.00"),
             Size.MEDIUM, new BigDecimal("1.50"),

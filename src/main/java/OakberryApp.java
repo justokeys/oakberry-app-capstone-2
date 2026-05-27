@@ -26,6 +26,28 @@ public class OakberryApp {
         System.out.println(s1.getDescription() + " — $" + s1.getPrice());
         System.out.println(s2.getDescription() + " — $" + s2.getPrice());
         System.out.println(s3.getDescription() + " — $" + s3.getPrice());
+        System.out.println();
+        System.out.println();
+        Order order = new Order();
+
+        AcaiBowl bowl2 = new AcaiBowl(Size.MEDIUM, BaseType.STANDARD);
+        bowl2.addTopping(new RegularTopping("Strawberry"));
+        bowl2.addTopping(new PremiumTopping("I*M*8", PremiumCategory.SUPERFOOD));
+        bowl2.setHempBoost(true);
+
+       order.addItem(bowl2);
+        order.addItem(new Drink(Size.MEDIUM, DrinkFlavor.MANGO_TANGO));
+        order.addItem(new Side(SideType.OAK_BAR));
+
+        System.out.println("=== ORDER ===");
+        for (OrderItem item : order.getItems()) {
+            System.out.println(item.getDescription() + " — $" + item.getPrice());
+        }
+        System.out.println();
+        System.out.println("Created: " + order.getOrderTime());
+        System.out.println("TOTAL: $" + order.getTotal());
+
+
 
 
 
