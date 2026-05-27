@@ -12,6 +12,11 @@ public class OakberryApp {
 
         System.out.println(bowl.getDescription());
         System.out.println("Total: $" + bowl.getPrice());
+        Drink d1 = new Drink(Size.MEDIUM, DrinkFlavor.MANGO_TANGO);
+        Drink d2 = new Drink(Size.LARGE, DrinkFlavor.VANILLA_LATTE);
+
+        System.out.println(d1.getDescription() + " — $" + d1.getPrice());
+        System.out.println(d2.getDescription() + " — $" + d2.getPrice());
 
 
 

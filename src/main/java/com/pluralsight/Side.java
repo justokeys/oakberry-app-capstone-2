@@ -3,19 +3,21 @@ package com.pluralsight;
 import java.math.BigDecimal;
 
 public class Side extends Item{
+    private SideType type;
 
 
-    protected Side(String name, Size size) {
-        super(name, size);
+    private Side(SideType type) {
+        super("Side", Size.NONE);
+        this.type = type;
     }
 
     @Override
     public BigDecimal getPrice() {
-        return null;
+        return type.getPrice();
     }
 
     @Override
     public String getDescription() {
-        return "";
+        return type.getDisplayName();
     }
 }

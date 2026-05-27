@@ -13,7 +13,8 @@ public enum DrinkCategory {
             Size.LARGE, new BigDecimal("6.60"))),
 
     BOTTLED_WATER("Waiakea Water", Map.of(Size.SMALL, new BigDecimal("2.50"),
-            Size.LARGE, new BigDecimal("4.00")));
+            Size.LARGE, new BigDecimal("4.00"))),
+    COFFEE("Coffee", Map.of(Size.SMALL, new BigDecimal("2.50"),Size.LARGE, new BigDecimal("5.50")));
 
 
     private final Map<Size, BigDecimal> prices;
