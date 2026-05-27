@@ -1,6 +1,7 @@
 package ui;
 
 import com.pluralsight.Order;
+import com.pluralsight.OrderItem;
 
 import java.util.Scanner;
 
@@ -18,9 +19,10 @@ public class UI {
                             == Welcome to Oakberry ==
                             1- Add a Bowl
                             2- Add a Drink
-                            3- View Current Order
-                            4- Checkout
-                            5- Exit
+                            3- Add a side
+                            4- View Current Order
+                            5- Checkout
+                            6- Exit
                             Please choose an option: \s""");
 
             int menuChoice = thescanner.nextInt();
@@ -33,12 +35,15 @@ public class UI {
                     drinkMenu(currentOrder);
                     break;
                 case 3:
-                    displayCart(currentOrder);
+                    addSide(currentOrder);
                     break;
                 case 4:
-                    checkOut(currentOrder);
+                    displayCart(currentOrder);
                     break;
                 case 5:
+                    checkOut(currentOrder);
+                    break;
+                case 6:
                     System.out.println("Thank you !");
                     appRunning = false;
                     break;
@@ -47,6 +52,32 @@ public class UI {
             }
 
         }
+    }
+    private void acaiMenu(Order order) {
+        System.out.println("Add bowl flow — coming soon");
+    }
+
+    private void drinkMenu(Order order) {
+        System.out.println("Add drink flow — coming soon");
+    }
+    private void  addSide(Order order) {
+        System.out.println("Add drink flow — coming soon");
+    }
+
+    private void displayCart(Order order) {
+        if(order.isEmpty()){
+            System.out.println("Your cart is empty");
+
+        }
+        System.out.println("=== Your Order ===");
+        for (OrderItem item : order.getItems()){
+            order.getItems();
+            System.out.println(item.getDescription() + " -$" + item.getPrice());
+        }
+    }
+
+    private void checkOut(Order order) {
+        System.out.println("Checkout — coming soon");
     }
 
 

@@ -1,4 +1,5 @@
 import com.pluralsight.*;
+import ui.UI;
 
 public class OakberryApp {
     public static void main(String[] args) {
@@ -48,8 +49,9 @@ public class OakberryApp {
         System.out.println("TOTAL: $" + order.getTotal());
 
 
+        UI menu = new UI();
 
-
+        menu.start();
 
 
     }
