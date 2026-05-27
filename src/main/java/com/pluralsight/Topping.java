@@ -7,6 +7,7 @@ public abstract class Topping {
     private final String name;
 
     public Topping( String name) {
+        this.isPremium = false;
         this.name = name;
     }
 

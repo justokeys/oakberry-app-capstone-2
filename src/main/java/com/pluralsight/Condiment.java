@@ -10,6 +10,6 @@ public class Condiment extends Topping{
 
     @Override
     BigDecimal getPriceForSize(Size size) {
-        return null;
+        return BigDecimal.ZERO;
     }
 }
