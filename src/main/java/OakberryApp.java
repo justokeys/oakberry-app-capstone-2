@@ -18,6 +18,14 @@ public class OakberryApp {
         System.out.println(d1.getDescription() + " — $" + d1.getPrice());
         System.out.println(d2.getDescription() + " — $" + d2.getPrice());
 
+        Side s1 = new Side(SideType.OAK_BAR);
+        Side s2 = new Side(SideType.GRANOLA);
+        Side s3 = new Side(SideType.PEANUT_BUTTER_BITES);
+
+        System.out.println(s1.getDescription() + " — $" + s1.getPrice());
+        System.out.println(s2.getDescription() + " — $" + s2.getPrice());
+        System.out.println(s3.getDescription() + " — $" + s3.getPrice());
+
 
 
 
