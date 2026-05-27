@@ -14,7 +14,7 @@ public class RegularTopping extends Topping {
             new RegularTopping("Banana"),
             new RegularTopping("Blueberry"),
             new RegularTopping("Passion Fruit"),
-            new RegularTopping("Cocao Nibbs"),
+            new RegularTopping("Cocoa Nibs"),
             new RegularTopping("Granola"),
             new RegularTopping("Chia Pudding"),
             new RegularTopping("Chia Seeds"),
@@ -24,7 +24,8 @@ public class RegularTopping extends Topping {
             new RegularTopping("Honey"),
             new RegularTopping("Goji Berries"),
             new RegularTopping("Vegan Granola"),
-            new RegularTopping("Milk Powder")
+            new RegularTopping("Milk Powder"),
+            new RegularTopping("Peanut Butter")
 
     );
 
