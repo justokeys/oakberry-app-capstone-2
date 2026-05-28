@@ -162,10 +162,23 @@ public class UI {
 
             if (choice == 0)
                 break;
+
             if (choice < 1 || choice > RegularTopping.MENU.size()) {
                 System.out.println("Invalid Choice");
                 continue;
             }
+            PremiumTopping toppingChoice = premiumToppings[choice -1].toTopping();
+            acaiBowl.addTopping(toppingChoice);
+            System.out.println("Add: " + toppingChoice.getName());
+
+            System.out.println("Add Hemp Seed Boost? (y/n): ");
+            String hempChoice = thescanner.nextLine().trim().toLowerCase();
+            if (hempChoice.equals("y")){
+                acaiBowl.setHempBoost(true);
+                System.out.println("Hemp Boost Added!");
+            }
+
+            order.addItem(acaiBowl);
 
         }
 
