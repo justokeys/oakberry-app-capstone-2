@@ -2,6 +2,7 @@ package ui;
 
 import com.pluralsight.Order;
 import com.pluralsight.OrderItem;
+import com.pluralsight.Size;
 
 import java.util.Scanner;
 
@@ -54,7 +55,39 @@ public class UI {
         }
     }
     private void acaiMenu(Order order) {
-        System.out.println("Add bowl flow — coming soon");
+        Size chosenSize = null;
+        while (chosenSize == null) {
+            System.out.println(
+                    """ 
+                            == Select Size ==
+                            1) Classic   (12 oz)
+                            2) Works     (16 oz)
+                            3) The Oak   (20 oz)
+                            Please choose an option: \s""");
+
+            int choice = thescanner.nextInt();
+            thescanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    chosenSize = Size.SMALL;
+                    System.out.println("You Picked " + chosenSize.getDisplayName());
+                    break;
+                case 2:
+                    chosenSize = Size.MEDIUM;
+                    System.out.println("You Picked " + chosenSize.getDisplayName());
+
+                    break;
+                case 3:
+                    chosenSize = Size.LARGE;
+                    System.out.println("You Picked " + chosenSize.getDisplayName());
+
+                    break;
+                default:
+                    System.out.println("Invalid selection. Please try again.");
+            }
+
+        }
     }
 
     private void drinkMenu(Order order) {
