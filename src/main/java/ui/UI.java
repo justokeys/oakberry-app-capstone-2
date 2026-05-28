@@ -2,6 +2,7 @@ package ui;
 
 import com.pluralsight.*;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UI {
@@ -125,7 +126,7 @@ public class UI {
 
 
             for (int i = 0; i < RegularTopping.MENU.size(); i++) {
-                System.out.println((i + 1 )+ ")" + RegularTopping.MENU.get(i).getName());
+                System.out.println((i + 1) + ")" + RegularTopping.MENU.get(i).getName());
             }
             System.out.println("0) Done");
             System.out.println("Choose: ");
@@ -163,33 +164,119 @@ public class UI {
             if (choice == 0)
                 break;
 
-            if (choice < 1 || choice > RegularTopping.MENU.size()) {
+            if (choice < 1 || choice > premiumToppings.length) {
                 System.out.println("Invalid Choice");
                 continue;
             }
-            PremiumTopping toppingChoice = premiumToppings[choice -1].toTopping();
+            PremiumTopping toppingChoice = premiumToppings[choice - 1].toTopping();
             acaiBowl.addTopping(toppingChoice);
             System.out.println("Add: " + toppingChoice.getName());
 
-            System.out.println("Add Hemp Seed Boost? (y/n): ");
-            String hempChoice = thescanner.nextLine().trim().toLowerCase();
-            if (hempChoice.equals("y")){
-                acaiBowl.setHempBoost(true);
-                System.out.println("Hemp Boost Added!");
-            }
-
-            order.addItem(acaiBowl);
 
         }
+        System.out.println("Add Hemp Seed Boost? (y/n): ");
+        String hempChoice = thescanner.nextLine().trim().toLowerCase();
+        if (hempChoice.equals("y")) {
+            acaiBowl.setHempBoost(true);
+            System.out.println("Hemp Boost Added!");
+        }
 
-
-
+        order.addItem(acaiBowl);
 
 
     }
 
     private void drinkMenu(Order order) {
-        System.out.println("Add drink flow — coming soon");
+        DrinkCategory choosenCategory = null;
+        DrinkCategory[] categories = DrinkCategory.values();
+        while (choosenCategory == null) {
+            System.out.println("== Select a drink Type ==");
+            for (int i = 0; i < categories.length; i++) {
+                System.out.println((i + 1) + ")" + categories[i].getDisplayName());
+            }
+            System.out.println("0) Done");
+            System.out.println("Choose: ");
+            int choice = thescanner.nextInt();
+            thescanner.nextLine();
+
+            if (choice == 0)
+                break;
+
+            if (choice < 1 || choice > categories.length) {
+                System.out.println("Invalid Choice");
+                continue;
+            }
+            choosenCategory = categories[choice - 1];
+        }
+        if (choosenCategory == null) {
+            System.out.println("Drink cancelled.");
+            return;
+        }
+
+        Size chosenSize = null;
+        while (chosenSize == null) {
+            System.out.println(
+                    """ 
+                            == Select Size ==
+                            1) Classic   (12 oz)
+                            2) Works     (16 oz)
+                            3) The Oak   (20 oz)
+                            Please choose an option: \s""");
+
+            int choice = thescanner.nextInt();
+            thescanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    chosenSize = Size.SMALL;
+                    System.out.println("You Picked " + chosenSize.getDisplayName());
+                    break;
+                case 2:
+                    chosenSize = Size.MEDIUM;
+                    System.out.println("You Picked " + chosenSize.getDisplayName());
+
+                    break;
+                case 3:
+                    chosenSize = Size.LARGE;
+                    System.out.println("You Picked " + chosenSize.getDisplayName());
+
+                    break;
+                default:
+                    System.out.println("Invalid selection. Please try again.");
+            }
+
+        }
+        List<DrinkFlavor> flavors = DrinkFlavor.flavorsFor(choosenCategory);
+
+        DrinkFlavor chosenFlavor = null;
+        while (chosenFlavor == null) {
+            System.out.println("== Pick a " + choosenCategory.getDisplayName() + " ==");
+            for (int i = 0; i < flavors.size(); i++) {
+                System.out.println((i + 1) + ")" + flavors.get(i).getDisplayName());
+            }
+            System.out.println("0) Done");
+            System.out.println("Choose: ");
+            int choice = thescanner.nextInt();
+            thescanner.nextLine();
+
+            if (choice == 0)
+                break;
+
+            if (choice < 1 || choice > flavors.size()) {
+                System.out.println("Invalid Choice");
+                continue;
+            }
+            chosenFlavor = flavors.get(choice - 1);
+
+        }
+        if (chosenFlavor == null) {
+            System.out.println("Drink cancelled.");
+            return;
+        }
+        Drink drink = new Drink(chosenSize, chosenFlavor);
+        order.addItem(drink);
+        System.out.println("✓" + drink.getDescription() + " added! - $" + drink.getPrice());
+
     }
 
     private void addSide(Order order) {
@@ -199,11 +286,11 @@ public class UI {
     private void displayCart(Order order) {
         if (order.isEmpty()) {
             System.out.println("Your cart is empty");
+            return;
 
         }
         System.out.println("=== Your Order ===");
         for (OrderItem item : order.getItems()) {
-            order.getItems();
             System.out.println(item.getDescription() + " -$" + item.getPrice());
         }
     }
