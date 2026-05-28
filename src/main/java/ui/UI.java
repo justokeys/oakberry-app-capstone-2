@@ -297,7 +297,7 @@ public class UI {
             System.out.println("Invalid Choice");
             return;
         }
-       Side chosenSide = sides.get[choice - 1];
+        Side chosenSide = new Side(sides[choice - 1]);
 
         order.addItem(chosenSide);
         System.out.println("✓" + chosenSide.getDescription() + " added! - $" + chosenSide.getPrice());
