@@ -1,8 +1,6 @@
 package ui;
 
-import com.pluralsight.Order;
-import com.pluralsight.OrderItem;
-import com.pluralsight.Size;
+import com.pluralsight.*;
 
 import java.util.Scanner;
 
@@ -54,7 +52,9 @@ public class UI {
 
         }
     }
+
     private void acaiMenu(Order order) {
+
         Size chosenSize = null;
         while (chosenSize == null) {
             System.out.println(
@@ -88,22 +88,108 @@ public class UI {
             }
 
         }
+        BaseType chosenBase = null;
+        while (chosenBase == null) {
+            System.out.println("== Select Base ==");
+            System.out.println(BaseType.STANDARD.getAcaiBase() + " " + "(+$" + BaseType.STANDARD.getAcaiBaseUpcharge() + ")");
+            System.out.println(BaseType.GREEN_WELLNESS.getAcaiBase() + " " + "(+$" + BaseType.GREEN_WELLNESS.getAcaiBaseUpcharge() + ")");
+            System.out.println(BaseType.IM8_MIXED_BERRY.getAcaiBase() + " " + "(+$" + BaseType.IM8_MIXED_BERRY.getAcaiBaseUpcharge() + ")");
+            int choice = thescanner.nextInt();
+            thescanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    chosenBase = BaseType.STANDARD;
+                    System.out.println("You Picked " + chosenBase.getAcaiBase());
+                    break;
+                case 2:
+                    chosenBase = BaseType.GREEN_WELLNESS;
+                    System.out.println("You Picked " + chosenBase.getAcaiBase());
+
+                    break;
+                case 3:
+                    chosenBase = BaseType.IM8_MIXED_BERRY;
+                    System.out.println("You Picked " + chosenBase.getAcaiBase());
+
+                    break;
+                default:
+                    System.out.println("Invalid selection. Please try again.");
+            }
+        }
+        AcaiBowl acaiBowl = new AcaiBowl(chosenSize, chosenBase);
+
+        System.out.println(" Regular Toppings ");
+        System.out.println("Type the number to add. Type 0 when done.");
+        while (true) {
+            // Display the numbered menu
+
+
+            for (int i = 0; i < RegularTopping.MENU.size(); i++) {
+                System.out.println((i + 1 )+ ")" + RegularTopping.MENU.get(i).getName());
+            }
+            System.out.println("0) Done");
+            System.out.println("Choose: ");
+            int choice = thescanner.nextInt();
+            thescanner.nextLine();
+
+
+            if (choice == 0)
+                break;
+
+            if (choice < 1 || choice > RegularTopping.MENU.size()) {
+                System.out.println("Invalid Choice");
+                continue;
+            }
+            RegularTopping toppingChoice = RegularTopping.MENU.get(choice - 1);
+            acaiBowl.addTopping(toppingChoice);
+            System.out.println("Added: " + toppingChoice.getName());
+
+
+        }
+        System.out.println(" Premium Toppings ");
+        System.out.println("Type the number to add. Type 0 when done.");
+
+        PremiumToppingMenu[] premiumToppings = PremiumToppingMenu.values();
+        while (true) {
+            for (int i = 0; i < premiumToppings.length; i++) {
+                System.out.println((i + 1) + ")" + premiumToppings[i].getDisplayName() +
+                        " (+$" + premiumToppings[i].getCategory().priceFor(chosenSize) + ")");
+            }
+            System.out.println("0) Done");
+            System.out.println("Choose: ");
+            int choice = thescanner.nextInt();
+            thescanner.nextLine();
+
+            if (choice == 0)
+                break;
+            if (choice < 1 || choice > RegularTopping.MENU.size()) {
+                System.out.println("Invalid Choice");
+                continue;
+            }
+
+        }
+
+
+
+
+
     }
 
     private void drinkMenu(Order order) {
         System.out.println("Add drink flow — coming soon");
     }
-    private void  addSide(Order order) {
+
+    private void addSide(Order order) {
         System.out.println("Add drink flow — coming soon");
     }
 
     private void displayCart(Order order) {
-        if(order.isEmpty()){
+        if (order.isEmpty()) {
             System.out.println("Your cart is empty");
 
         }
         System.out.println("=== Your Order ===");
-        for (OrderItem item : order.getItems()){
+        for (OrderItem item : order.getItems()) {
             order.getItems();
             System.out.println(item.getDescription() + " -$" + item.getPrice());
         }

@@ -9,7 +9,7 @@ public class RegularTopping extends Topping {
     public RegularTopping( String name) {
         super(name);
     }
-    private static final List<RegularTopping> MENU = List.of(
+    public static final List<RegularTopping> MENU = List.of(
             new RegularTopping("Strawberry"),
             new RegularTopping("Banana"),
             new RegularTopping("Blueberry"),
