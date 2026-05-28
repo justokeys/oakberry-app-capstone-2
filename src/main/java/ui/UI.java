@@ -280,8 +280,32 @@ public class UI {
     }
 
     private void addSide(Order order) {
-        System.out.println("Add drink flow — coming soon");
+        SideType[] sides = SideType.values();
+        System.out.println("== Add a Side ==");
+        for (int i = 0; i < sides.length; i++) {
+            System.out.println((i + 1) + ")" + sides[i].getDisplayName());
+        }
+        System.out.println("0) Done");
+        System.out.println("Choose: ");
+        int choice = thescanner.nextInt();
+        thescanner.nextLine();
+
+        if (choice == 0)
+           return;
+
+        if (choice < 1 || choice > sides.length) {
+            System.out.println("Invalid Choice");
+            return;
+        }
+       Side chosenSide = sides.get[choice - 1];
+
+        order.addItem(chosenSide);
+        System.out.println("✓" + chosenSide.getDescription() + " added! - $" + chosenSide.getPrice());
     }
+
+
+
+
 
     private void displayCart(Order order) {
         if (order.isEmpty()) {
@@ -297,6 +321,10 @@ public class UI {
 
     private void checkOut(Order order) {
         System.out.println("Checkout — coming soon");
+    }
+
+    public void clear() {
+        items.clear();
     }
 
 
