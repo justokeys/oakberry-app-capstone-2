@@ -1,9 +1,13 @@
 package ui;
 
 import com.pluralsight.*;
+import service.RecieptService;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Scanner;
+
+import static service.RecieptService.saveReceipt;
 
 public class UI {
     private final Scanner thescanner = new Scanner(System.in);
@@ -92,7 +96,7 @@ public class UI {
         BaseType chosenBase = null;
         while (chosenBase == null) {
             System.out.println("== Select Base ==");
-            System.out.println(BaseType.STANDARD.getAcaiBase() + " " + "(+$" + BaseType.STANDARD.getAcaiBaseUpcharge() + ")");
+            System.out.println("1)" + BaseType.STANDARD.getAcaiBase() + " " + "(+$" + BaseType.STANDARD.getAcaiBaseUpcharge() + ")");
             System.out.println(BaseType.GREEN_WELLNESS.getAcaiBase() + " " + "(+$" + BaseType.GREEN_WELLNESS.getAcaiBaseUpcharge() + ")");
             System.out.println(BaseType.IM8_MIXED_BERRY.getAcaiBase() + " " + "(+$" + BaseType.IM8_MIXED_BERRY.getAcaiBaseUpcharge() + ")");
             int choice = thescanner.nextInt();
@@ -182,6 +186,8 @@ public class UI {
         }
 
         order.addItem(acaiBowl);
+
+        System.out.println("Sub total: " + order.getTotal());
 
 
     }
@@ -276,6 +282,8 @@ public class UI {
         Drink drink = new Drink(chosenSize, chosenFlavor);
         order.addItem(drink);
         System.out.println("✓" + drink.getDescription() + " added! - $" + drink.getPrice());
+        System.out.println("Sub total: " + order.getTotal());
+
 
     }
 
@@ -301,6 +309,7 @@ public class UI {
 
         order.addItem(chosenSide);
         System.out.println("✓" + chosenSide.getDescription() + " added! - $" + chosenSide.getPrice());
+        System.out.println("Sub total: " + order.getTotal());
     }
 
 
@@ -317,15 +326,41 @@ public class UI {
         for (OrderItem item : order.getItems()) {
             System.out.println(item.getDescription() + " -$" + item.getPrice());
         }
+        System.out.println("Total: " + order.getTotal() );
     }
 
     private void checkOut(Order order) {
-        System.out.println("Checkout — coming soon");
+        if (order.isEmpty()) {
+            System.out.println("Your cart is empty");
+            return;
+        }
+        System.out.println("========================================");
+        System.out.println("            Oakberry Order Summary     " );
+        System.out.println("========================================");
+        System.out.println();
+        for (OrderItem item : order.getItems()) {
+            System.out.println(item.getDescription() + " -$" + item.getPrice());
+        }
+        System.out.println("----------------------------------------");
+        System.out.println("Total: " + order.getTotal() );
+        System.out.println("1) confirm order");
+        System.out.println("2) cancel");
+        int userchoice = thescanner.nextInt();
+
+        if (userchoice == 1){
+            RecieptService.saveReceipt(order);
+            order.clear();
+        }
+        else {
+            System.out.println("Order canceled");
+            order.clear();
+        }
+
+
+
     }
 
-    public void clear() {
-        items.clear();
-    }
+
 
 
 }
