@@ -1,0 +1,278 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1550" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #fcfbf9; }
+      .border { stroke: #d3c7b5; stroke-width: 1.5; fill: #f5f2eb; rx: 6px; }
+      .abstract-border { stroke: #b19ffb; stroke-width: 2; fill: #f3f0ff; rx: 6px; }
+      .interface-border { stroke: #7fb5f5; stroke-width: 2; fill: #edf5ff; rx: 6px; }
+      .enum-border { stroke: #e2975d; stroke-width: 1.5; fill: #fff7f0; rx: 6px; }
+      .text-title { font-family: 'SF Pro Display', -apple-system, 'Segoe UI', sans-serif; font-size: 15px; font-weight: bold; fill: #3c352a; text-anchor: middle; }
+      .text-body { font-family: 'SF Pro Text', -apple-system, 'Segoe UI', sans-serif; font-size: 11px; fill: #4a4235; }
+      .text-body-private { font-family: 'SF Pro Text', -apple-system, 'Segoe UI', sans-serif; font-size: 11px; fill: #72624d; }
+      .text-body-public { font-family: 'SF Pro Text', -apple-system, 'Segoe UI', sans-serif; font-size: 11px; fill: #1d6cd1; font-weight: 500; }
+      .text-stereotype { font-family: 'SF Pro Text', -apple-system, 'Segoe UI', sans-serif; font-size: 11px; font-style: italic; fill: #625949; text-anchor: middle; }
+      .line { stroke: #8a7a65; stroke-width: 1; }
+      .line-dashed { stroke: #6b9ee2; stroke-width: 1.5; stroke-dasharray: 5,5; }
+      .line-extends { stroke: #8062f7; stroke-width: 1.5; }
+      .line-dependency { stroke: #a19582; stroke-width: 1.2; stroke-dasharray: 4,4; }
+      .arrow { fill: none; stroke: #8a7a65; stroke-width: 1.5; }
+    </style>
+    
+    <marker id="arrow-empty" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fcfbf9" stroke="#8a7a65" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-interface" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#edf5ff" stroke="#7fb5f5" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-abstract" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f3f0ff" stroke="#b19ffb" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-depend" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9" fill="none" stroke="#a19582" stroke-width="1.2"/>
+    </marker>
+    <marker id="aggregation" viewBox="0 0 12 10" refX="0" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 0 5 L 6 1 L 12 5 L 6 9 z" fill="#fcfbf9" stroke="#8a7a65" stroke-width="1.5"/>
+    </marker>
+    <marker id="composition-has" viewBox="0 0 12 10" refX="0" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 0 5 L 6 1 L 12 5 L 6 9 z" fill="#8a7a65" stroke="#8a7a65" stroke-width="1"/>
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg"/>
+
+  <text x="550" y="30" font-family="'SF Pro Display', sans-serif" font-size="22px" font-weight="bold" fill="#3c352a" text-anchor="middle">Oakberry Açaí Application - Complete Class Diagram</text>
+
+  <g transform="translate(425, 80)">
+    <rect width="250" height="85" class="interface-border"/>
+    <text x="125" y="20" class="text-stereotype">«interface»</text>
+    <text x="125" y="38" class="text-title" style="fill: #164fa5;">OrderItem</text>
+    <line x1="0" y1="46" x2="250" y2="46" class="line" style="stroke: #7fb5f5;"/>
+    <text x="15" y="62" class="text-body-public">+ getPrice() : BigDecimal</text>
+    <text x="15" y="76" class="text-body-public">+ getDescription() : String</text>
+  </g>
+
+  <g transform="translate(435, 230)">
+    <rect width="230" height="115" class="abstract-border"/>
+    <text x="115" y="20" class="text-stereotype">«abstract»</text>
+    <text x="115" y="38" class="text-title" style="fill: #4c26d4;">Item</text>
+    <line x1="0" y1="46" x2="230" y2="46" class="line" style="stroke: #b19ffb;"/>
+    <text x="15" y="62" class="text-body-private">- name : String</text>
+    <text x="15" y="76" class="text-body-private">- size : Size</text>
+    <line x1="0" y1="84" x2="230" y2="84" class="line" style="stroke: #b19ffb;"/>
+    <text x="15" y="99" class="text-body-public">+ getName() : String</text>
+    <text x="15" y="111" class="text-body-public">+ getSize() : Size</text>
+  </g>
+  <path d="M 550, 230 L 550, 165" class="line-dashed" marker-end="url(#arrow-interface)"/>
+
+  <g transform="translate(45, 80)">
+    <rect width="280" height="155" class="border"/>
+    <text x="140" y="25" class="text-title">Order</text>
+    <line x1="0" y1="35" x2="280" y2="35" class="line"/>
+    <text x="15" y="52" class="text-body-private">- items : List&lt;OrderItem&gt;</text>
+    <text x="15" y="67" class="text-body-private">- orderTime : LocalDateTime</text>
+    <line x1="0" y1="75" x2="280" y2="75" class="line"/>
+    <text x="15" y="92" class="text-body-public">+ addItem(item : OrderItem) : void</text>
+    <text x="15" y="105" class="text-body-public">+ getItems() : List&lt;OrderItem&gt;</text>
+    <text x="15" y="118" class="text-body-public">+ isEmpty() : boolean</text>
+    <text x="15" y="131" class="text-body-public">+ getTotal() : BigDecimal</text>
+    <text x="15" y="144" class="text-body-public">+ clear() : void</text>
+  </g>
+  <path d="M 325, 120 L 425, 120" class="arrow" marker-start="url(#aggregation)"/>
+  <text x="340" y="112" class="text-body" style="font-size: 10px;">contains *</text>
+
+  <g transform="translate(60, 430)">
+    <rect width="290" height="190" class="border"/>
+    <text x="145" y="25" class="text-title">AcaiBowl</text>
+    <line x1="0" y1="35" x2="290" y2="35" class="line"/>
+    <text x="15" y="52" class="text-body-private">- HEMP_FEES : Map&lt;Size, BigDecimal&gt; {static}</text>
+    <text x="15" y="67" class="text-body-private">- BASE_PRICES : Map&lt;Size, BigDecimal&gt; {static}</text>
+    <text x="15" y="82" class="text-body-private">- toppings : List&lt;Topping&gt;</text>
+    <text x="15" y="97" class="text-body-private">- base : BaseType</text>
+    <text x="15" y="112" class="text-body-private">- hempBoost : boolean</text>
+    <line x1="0" y1="120" x2="290" y2="120" class="line"/>
+    <text x="15" y="136" class="text-body-public">+ addTopping(topping : Topping) : void</text>
+    <text x="15" y="149" class="text-body-public">+ getPrice() : BigDecimal {Override}</text>
+    <text x="15" y="162" class="text-body-public">+ getDescription() : String {Override}</text>
+    <text x="15" y="175" class="text-body-public">+ setHempBoost(hempBoost : boolean) : void</text>
+  </g>
+  <path d="M 205, 430 L 205, 390 L 510, 390 L 510, 345" class="line-extends" marker-end="url(#arrow-abstract)"/>
+
+  <g transform="translate(435, 430)">
+    <rect width="230" height="130" class="border"/>
+    <text x="115" y="25" class="text-title">Drink</text>
+    <line x1="0" y1="35" x2="230" y2="35" class="line"/>
+    <text x="15" y="52" class="text-body-private">- flavor : DrinkFlavor</text>
+    <line x1="0" y1="62" x2="230" y2="62" class="line"/>
+    <text x="15" y="79" class="text-body-public">+ getPrice() : BigDecimal {Override}</text>
+    <text x="15" y="94" class="text-body-public">+ getDescription() : String {Override}</text>
+    <text x="15" y="109" class="text-body-public">+ getFlavor() : DrinkFlavor</text>
+  </g>
+  <path d="M 550, 430 L 550, 345" class="line-extends" marker-end="url(#arrow-abstract)"/>
+
+  <g transform="translate(730, 430)">
+    <rect width="230" height="130" class="border"/>
+    <text x="115" y="25" class="text-title">Side</text>
+    <line x1="0" y1="35" x2="230" y2="35" class="line"/>
+    <text x="15" y="52" class="text-body-private">- type : SideType</text>
+    <line x1="0" y1="62" x2="230" y2="62" class="line"/>
+    <text x="15" y="79" class="text-body-public">+ getPrice() : BigDecimal {Override}</text>
+    <text x="15" y="94" class="text-body-public">+ getDescription() : String {Override}</text>
+  </g>
+  <path d="M 845, 430 L 845, 390 L 590, 390 L 590, 345" class="line-extends" marker-end="url(#arrow-abstract)"/>
+
+  <g transform="translate(240, 690)">
+    <rect width="250" height="110" class="abstract-border"/>
+    <text x="125" y="20" class="text-stereotype">«abstract»</text>
+    <text x="125" y="38" class="text-title" style="fill: #4c26d4;">Topping</text>
+    <line x1="0" y1="46" x2="250" y2="46" class="line" style="stroke: #b19ffb;"/>
+    <text x="15" y="62" class="text-body-private">- name : String</text>
+    <line x1="0" y1="70" x2="250" y2="70" class="line" style="stroke: #b19ffb;"/>
+    <text x="15" y="86" class="text-body-public">+ getName() : String</text>
+    <text x="15" y="100" class="text-body-public" style="font-style: italic;"># getPriceForSize(s : Size) : BigDecimal</text>
+  </g>
+  <path d="M 210, 620 L 210, 745 L 240, 745" class="arrow" marker-start="url(#composition-has)"/>
+  <text x="165" y="670" class="text-body" style="font-size: 10px;">toppings *</text>
+
+  <g transform="translate(60, 870)">
+    <rect width="250" height="95" class="border"/>
+    <text x="125" y="25" class="text-title">RegularTopping</text>
+    <line x1="0" y1="35" x2="250" y2="35" class="line"/>
+    <text x="15" y="52" class="text-body-public">+ MENU : List&lt;RegularTopping&gt; {static}</text>
+    <line x1="0" y1="60" x2="250" y2="60" class="line"/>
+    <text x="15" y="77" class="text-body-public">+ getPriceForSize(s : Size) : BigDecimal</text>
+  </g>
+  <path d="M 185, 870 L 185, 830 L 320, 830 L 320, 800" class="line-extends" marker-end="url(#arrow-abstract)"/>
+
+  <g transform="translate(370, 870)">
+    <rect width="270" height="95" class="border"/>
+    <text x="135" y="25" class="text-title">PremiumTopping</text>
+    <line x1="0" y1="35" x2="270" y2="35" class="line"/>
+    <text x="15" y="52" class="text-body-private">- premiumCategory : PremiumCategory</text>
+    <line x1="0" y1="60" x2="270" y2="60" class="line"/>
+    <text x="15" y="77" class="text-body-public">+ getPremiumCategory() : PremiumCategory</text>
+    <text x="15" y="90" class="text-body-public">+ getPriceForSize(s : Size) : BigDecimal</text>
+  </g>
+  <path d="M 505, 870 L 505, 830 L 410, 830 L 410, 800" class="line-extends" marker-end="url(#arrow-abstract)"/>
+
+  <g transform="translate(730, 80)">
+    <rect width="250" height="150" class="enum-border"/>
+    <text x="125" y="20" class="text-stereotype">«enum»</text>
+    <text x="125" y="38" class="text-title" style="fill: #b35913;">Size</text>
+    <line x1="0" y1="46" x2="250" y2="46" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="62" class="text-body">SMALL, MEDIUM, LARGE, NONE</text>
+    <line x1="0" y1="70" x2="250" y2="70" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="86" class="text-body-private">- ounces : int</text>
+    <text x="15" y="99" class="text-body-private">- displayName : String</text>
+    <text x="15" y="112" class="text-body-private">- sizeLabel : String</text>
+    <text x="15" y="128" class="text-body-public">+ getOunces() : int</text>
+    <text x="15" y="141" class="text-body-public">+ getDisplayName() : String</text>
+  </g>
+
+  <g transform="translate(60, 1030)">
+    <rect width="260" height="120" class="enum-border"/>
+    <text x="130" y="20" class="text-stereotype">«enum»</text>
+    <text x="130" y="38" class="text-title" style="fill: #b35913;">BaseType</text>
+    <line x1="0" y1="46" x2="260" y2="46" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="62" class="text-body">STANDARD, GREEN_WELLNESS, IM8_MIXED_BERRY</text>
+    <line x1="0" y1="70" x2="260" y2="70" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="86" class="text-body-public">+ getAcaiBaseUpcharge() : BigDecimal</text>
+    <text x="15" y="101" class="text-body-public">+ getAcaiBase() : String</text>
+  </g>
+  <path d="M 120, 620 L 120, 1030" class="line-dependency" marker-end="url(#arrow-depend)"/>
+
+  <g transform="translate(730, 600)">
+    <rect width="290" height="110" class="enum-border"/>
+    <text x="145" y="20" class="text-stereotype">«enum»</text>
+    <text x="145" y="38" class="text-title" style="fill: #b35913;">DrinkCategory</text>
+    <line x1="0" y1="46" x2="290" y2="46" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="62" class="text-body">SMOOTHIE, REFRESHER, BOTTLED_WATER, COFFEE</text>
+    <line x1="0" y1="70" x2="290" y2="70" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="86" class="text-body-public">+ getDisplayName() : String</text>
+    <text x="15" y="99" class="text-body-public">+ priceFor(s : Size) : BigDecimal</text>
+  </g>
+
+  <g transform="translate(435, 600)">
+    <rect width="260" height="120" class="enum-border"/>
+    <text x="130" y="20" class="text-stereotype">«enum»</text>
+    <text x="130" y="38" class="text-title" style="fill: #b35913;">DrinkFlavor</text>
+    <line x1="0" y1="46" x2="260" y2="46" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="62" class="text-body">MANGO_TANGO, MIXED_BERRY, VANILLA_LATTE...</text>
+    <line x1="0" y1="70" x2="260" y2="70" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="86" class="text-body-public">+ flavorsFor(c : DrinkCategory) : List&lt;DrinkFlavor&gt;</text>
+    <text x="15" y="100" class="text-body-public">+ getDisplayName() : String</text>
+  </g>
+  <path d="M 550, 560 L 550, 600" class="line-dependency" marker-end="url(#arrow-depend)"/>
+  <path d="M 695, 660 L 730, 660" class="line-dependency" marker-end="url(#arrow-depend)"/>
+
+  <g transform="translate(450, 1030)">
+    <rect width="220" height="85" class="enum-border"/>
+    <text x="110" y="20" class="text-stereotype">«enum»</text>
+    <text x="110" y="38" class="text-title" style="fill: #b35913;">PremiumCategory</text>
+    <line x1="0" y1="46" x2="220" y2="46" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="62" class="text-body">NUT_BUTTER, PROTEIN, SUPERFOOD</text>
+    <line x1="0" y1="70" x2="220" y2="70" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="81" class="text-body-public">+ priceFor(s : Size) : BigDecimal</text>
+  </g>
+  <path d="M 505, 965 L 505, 1030" class="line-dependency" marker-end="url(#arrow-depend)"/>
+
+  <g transform="translate(690, 1030)">
+    <rect width="250" height="110" class="enum-border"/>
+    <text x="125" y="20" class="text-stereotype">«enum»</text>
+    <text x="125" y="38" class="text-title" style="fill: #b35913;">PremiumToppingMenu</text>
+    <line x1="0" y1="46" x2="250" y2="46" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="62" class="text-body">ALMOND_BUTTER, WHEY_PROTEIN, IM8_ULTIMATE...</text>
+    <line x1="0" y1="70" x2="250" y2="70" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="86" class="text-body-public">+ getDisplayName() : String</text>
+    <text x="15" y="101" class="text-body-public">+ toTopping() : PremiumTopping</text>
+  </g>
+  <path d="M 640, 930 L 780, 930 L 780, 1030" class="line-dependency" marker-end="url(#arrow-depend)"/>
+
+  <g transform="translate(800, 1220)">
+    <rect width="230" height="110" class="enum-border"/>
+    <text x="115" y="20" class="text-stereotype">«enum»</text>
+    <text x="115" y="38" class="text-title" style="fill: #b35913;">SideType</text>
+    <line x1="0" y1="46" x2="230" y2="46" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="62" class="text-body">OAK_BAR, GRANOLA, PEANUT_BUTTER_BITES</text>
+    <line x1="0" y1="70" x2="230" y2="70" class="line" style="stroke: #e2975d;"/>
+    <text x="15" y="86" class="text-body-public">+ getDisplayName() : String</text>
+    <text x="15" y="99" class="text-body-public">+ getPrice() : BigDecimal</text>
+  </g>
+  <path d="M 845, 560 L 845, 1220" class="line-dependency" marker-end="url(#arrow-depend)"/>
+
+  <g transform="translate(60, 1220)">
+    <rect width="280" height="125" class="border"/>
+    <text x="140" y="25" class="text-title">PromptHelper</text>
+    <line x1="0" y1="35" x2="280" y2="35" class="line"/>
+    <text x="15" y="52" class="text-body-private">- theScanner : Scanner</text>
+    <line x1="0" y1="60" x2="280" y2="60" class="line"/>
+    <text x="15" y="77" class="text-body-public">+ money(amount : BigDecimal) : String {static}</text>
+    <text x="15" y="90" class="text-body-public">+ readInt(prompt : String) : int</text>
+    <text x="15" y="103" class="text-body-public">+ inputYesNo(prompt : String) : boolean</text>
+  </g>
+
+  <g transform="translate(425, 1220)">
+    <rect width="320" height="95" class="border"/>
+    <text x="160" y="25" class="text-title">RecieptService</text>
+    <line x1="0" y1="35" x2="320" y2="35" class="line"/>
+    <text x="15" y="60" class="text-body-public">+ saveReceipt(order : Order) : void {static}</text>
+    <text x="15" y="75" class="text-body-private">- getBufferedWriter(o : Order) : BufferedWriter {static}</text>
+  </g>
+
+  <g transform="translate(425, 1370)">
+    <rect width="320" height="155" class="border" style="stroke: #555; fill: #faf8f5;"/>
+    <text x="160" y="25" class="text-title">UI</text>
+    <line x1="0" y1="35" x2="320" y2="35" class="line"/>
+    <text x="15" y="52" class="text-body-private">- thescanner : Scanner</text>
+    <text x="15" y="65" class="text-body-private">- currentOrder : Order</text>
+    <text x="15" y="78" class="text-body-private">- prompts : PromptHelper</text>
+    <line x1="0" y1="85" x2="320" y2="85" class="line"/>
+    <text x="15" y="101" class="text-body-public">+ homeMenu() : void</text>
+    <text x="15" y="114" class="text-body-public">+ start() : void</text>
+    <text x="15" y="127" class="text-body-private">- acaiMenu(order : Order) : void</text>
+    <text x="15" y="140" class="text-body-private">- drinkMenu(order : Order) : void</text>
+  </g>
+  
+  <path d="M 425, 1430 L 200, 1430 L 200, 1345" class="line-dependency" marker-end="url(#arrow-depend)"/>
+  <path d="M 585, 1370 L 585, 1315" class="line-dependency" marker-end="url(#arrow-depend)"/>
+
+</svg>

@@ -35,7 +35,8 @@ public class RecieptService {
 
         for (OrderItem item : order.getItems()) {
             String details = item.getDescription().replace("\n", "\n   ");
-            receipt.append("  • ").append(details).append(" (").append(PromptHelper.money(item.getPrice())).append(")\n");
+            receipt.append("  • ").append(details).append("\n");
+            receipt.append("      Price: ").append(PromptHelper.money(item.getPrice())).append("\n\n");
         }
 
         receipt.append("\n  TOTAL: ").append(PromptHelper.money(order.getTotal())).append("\n");
