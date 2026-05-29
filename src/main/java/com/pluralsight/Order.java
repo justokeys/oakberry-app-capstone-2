@@ -4,8 +4,10 @@ package com.pluralsight;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Formattable;
 import java.util.List;
 
 public class Order {
@@ -19,6 +21,8 @@ public class Order {
 
 
     public LocalDateTime getOrderTime() {
+
+
         return this.orderTime;
     }
     public void addItem(OrderItem item){
@@ -43,5 +47,9 @@ public class Order {
 
     public void removeItem(int index){
         items.remove(index);
+    }
+
+    public void clear() {
+        items.clear();
     }
 }
