@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import com.pluralsight.enums.Size;
+
 import java.math.BigDecimal;
 
 public abstract class Topping {

@@ -1,22 +1,27 @@
 package com.pluralsight;
 
+import com.pluralsight.enums.BaseType;
+import com.pluralsight.enums.Size;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class AcaiBowl extends Item {
-
+ // set the price for hemp upgrade per bowl size
     private static final Map<Size, BigDecimal> HEMP_FEES = Map.of(
             Size.SMALL, new BigDecimal("1.00"),
             Size.MEDIUM, new BigDecimal("1.50"),
             Size.LARGE, new BigDecimal("2.00")
     );
+    // set base price for bowl size
     private static final Map<Size, BigDecimal> BASE_PRICES = Map.of(
             Size.SMALL, new BigDecimal("9.00"),
             Size.MEDIUM, new BigDecimal("10.00"),
             Size.LARGE, new BigDecimal("12.00")
     );
+     // Holds the toppings added to this bowl.
     private final List<Topping> toppings;
     private final BaseType base;
     private boolean hempBoost;
@@ -64,6 +69,7 @@ public class AcaiBowl extends Item {
     }
 
     @Override
+    // prints bowl description
     public String getDescription() {
         StringBuilder aBowl = new StringBuilder();
         aBowl.append(getSize()).append(" ").append(getName()).append(" ").append("(").append(base.getAcaiBase()).append(")");

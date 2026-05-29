@@ -1,8 +1,11 @@
 package com.pluralsight;
 
 
-import java.math.BigDecimal;
+import com.pluralsight.enums.DrinkFlavor;
+import com.pluralsight.enums.Size;
 
+import java.math.BigDecimal;
+// drink represents a beverages priced per size , with subset of categories defined in drink category enum
 public class Drink extends Item {
     private final DrinkFlavor flavor;
 

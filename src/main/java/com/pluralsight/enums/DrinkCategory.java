@@ -1,8 +1,8 @@
-package com.pluralsight;
+package com.pluralsight.enums;
 
 import java.math.BigDecimal;
 import java.util.Map;
-
+// Defines the available beverages and their fixed prices according to size.
 public enum DrinkCategory {
     SMOOTHIE("Smoothie", Map.of(Size.SMALL, new BigDecimal("5.00"),
             Size.MEDIUM, new BigDecimal("6.50"),

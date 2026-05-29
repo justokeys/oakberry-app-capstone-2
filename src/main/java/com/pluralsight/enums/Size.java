@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.enums;
 
 // set the size and name of bowl and drink sizes
 public enum Size {

@@ -1,6 +1,10 @@
 package ui;
 
 import com.pluralsight.*;
+import com.pluralsight.enums.*;
+import com.pluralsight.Side;
+import com.pluralsight.toppings.PremiumTopping;
+import com.pluralsight.toppings.RegularTopping;
 import service.PromptHelper;
 import service.RecieptService;
 
@@ -415,11 +419,11 @@ public class UI {
 
         for (OrderItem item : order.getItems()) {
             String details = item.getDescription().replace("\n", "\n   ");
-            System.out.println("│ • " + details + " (" + PromptHelper.money(item.getPrice()) + ")      │");
+            System.out.println(" • " + details + " (" + PromptHelper.money(item.getPrice()) + ")      ");
         }
 
-        System.out.println("├────────────────────────────────────────┤");
-        System.out.println("│ Total: " + PromptHelper.money(order.getTotal()) + "        |");
+        System.out.println(" ────────────────────────────────────────");
+        System.out.println("  Total: " + PromptHelper.money(order.getTotal()) + "        ");
         System.out.println("""
             ╰────────────────────────────────────────╯
              1) Confirm Order

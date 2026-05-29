@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.enums;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public enum DrinkFlavor {
         this.displayName = displayName;
         this.category = drinkCategory;
     }
-
+   // takes category from outside and filters for matching category
     public static List<DrinkFlavor> flavorsFor(DrinkCategory category) {
         List<DrinkFlavor> matches = new ArrayList<>();
 

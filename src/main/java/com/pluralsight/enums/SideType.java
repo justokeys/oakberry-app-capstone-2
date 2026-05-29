@@ -1,7 +1,7 @@
-package com.pluralsight;
+package com.pluralsight.enums;
 
 import java.math.BigDecimal;
-
+// Defines the available sides and their fixed prices.
 public enum SideType {
     OAK_BAR("OakBar", new BigDecimal("3.50")),
     GRANOLA("Organic Granola", new BigDecimal("3.00")),

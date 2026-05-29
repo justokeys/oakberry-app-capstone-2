@@ -1,4 +1,8 @@
-package com.pluralsight;
+package com.pluralsight.toppings;
+
+import com.pluralsight.Topping;
+import com.pluralsight.enums.PremiumCategory;
+import com.pluralsight.enums.Size;
 
 import java.math.BigDecimal;
 

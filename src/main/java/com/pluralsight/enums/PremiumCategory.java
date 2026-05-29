@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.enums;
 
 import java.math.BigDecimal;
 import java.util.Map;

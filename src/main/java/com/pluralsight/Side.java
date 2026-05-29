@@ -1,7 +1,11 @@
 package com.pluralsight;
 
-import java.math.BigDecimal;
+import com.pluralsight.enums.SideType;
+import com.pluralsight.enums.Size;
 
+import java.math.BigDecimal;
+// Side represents a flat-priced side item. Extends Item so it can be
+// added to an Order alongside bowls and drinks.
 public class Side extends Item {
     private final SideType type;
 

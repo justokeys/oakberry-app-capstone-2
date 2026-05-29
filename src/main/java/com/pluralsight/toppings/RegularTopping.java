@@ -1,4 +1,7 @@
-package com.pluralsight;
+package com.pluralsight.toppings;
+
+import com.pluralsight.Topping;
+import com.pluralsight.enums.Size;
 
 import java.math.BigDecimal;
 import java.util.List;

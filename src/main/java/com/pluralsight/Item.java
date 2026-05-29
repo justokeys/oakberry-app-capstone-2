@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import com.pluralsight.enums.Size;
+// ABSTRACT class to force inheritance and ensure I can add all children to common list for check out
 public abstract class Item implements OrderItem {
     private final String name;
 
