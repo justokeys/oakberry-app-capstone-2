@@ -27,20 +27,23 @@ public class RecieptService {
         String filename = "src/main/resources/receipts/" + order.getOrderTime().format(fmt) + ".txt";
         BufferedWriter receiptWriter = new BufferedWriter(new FileWriter(filename));
 
-
         StringBuilder receipt = new StringBuilder();
-        receipt.append("=== OAKBERRY RECEIPT ===\n");
-        receipt.append("Date: ").append(order.getOrderTime().format(fmt)).append("\n\n");
+        receipt.append("╭────────────────────────────────────────╮\n");
+        receipt.append("│           === OAKBERRY RECEIPT ===     │\n");
+        receipt.append("├────────────────────────────────────────┤\n");
+        receipt.append("  Date: ").append(order.getOrderTime().format(fmt)).append("\n\n");
 
         for (OrderItem item : order.getItems()) {
-            receipt.append(item.getDescription()).append("  $").append(item.getPrice()).append("\n");
+            String details = item.getDescription().replace("\n", "\n   ");
+            receipt.append("  • ").append(details).append(" (").append(PromptHelper.money(item.getPrice())).append(")\n");
         }
 
-        receipt.append("\nTOTAL: $").append(order.getTotal()).append("\n");
+        receipt.append("\n  TOTAL: ").append(PromptHelper.money(order.getTotal())).append("\n");
+        receipt.append("╰────────────────────────────────────────╯\n");
 
         receiptWriter.write(receipt.toString());
         receiptWriter.newLine();
-        System.out.println("Receipt saved" + filename);
+        System.out.println("Receipt saved: " + filename);
 
         return receiptWriter;
     }

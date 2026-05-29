@@ -4,9 +4,9 @@ import com.pluralsight.*;
 import service.PromptHelper;
 import service.RecieptService;
 
-
 import java.util.List;
 import java.util.Scanner;
+
 // All menu and user inputs performed in this class
 public class UI {
     private final Scanner thescanner = new Scanner(System.in);
@@ -14,74 +14,52 @@ public class UI {
     // Initialize Prompt helper method for input validation -- pass in scanner
     private final PromptHelper prompts = new PromptHelper(thescanner);
 
-//public void newOrder(){
-//    boolean appIsRunning = true;
-//    while (appISRunning){
-//        System.out.println("""
-//    ╔════════════════════════════════════════╗
-//    ║                                        ║
-//    ║          🫐  O A K B E R R Y  🫐       ║
-//    ║           Açaí Bowls & More            ║
-//    ║                                        ║
-//    ╚════════════════════════════════════════╝
-//    """);
-//        System.out.println("1 - Start new order");
-//        System.out.println("0 - Exit");
-//
-//        int choice = prompts.readInt("Choose: ");
-//        switch (choice){
-//            case 1:
-//                start();
-//                break;
-//            case 2:
-//                System.out.println("Thank you!");
-//                appRunning = false;
-//                break;
-//        }
-//    }
-//}
-
-    public void start() {
-
+    public void homeMenu(){
         // Opening menu
         boolean appRun = true;
-        while (appRun){
+        while (appRun) {
             System.out.println("""
-    ╭────────────────────────────────────────╮
-    │                                        │
-    │            O A K B E R R Y             │
-    │           Açaí Bowls & More            │
-    │                                        │
-    ╰────────────────────────────────────────╯
-    """);
+                    ╭────────────────────────────────────────╮
+                    │                                        │
+                    │            O A K B E R R Y             │
+                    │           Açaí Bowls & More            │
+                    │                                        │
+                    ╰────────────────────────────────────────╯
+                    """);
             System.out.println("1 - Start new order");
             System.out.println("0 - Exit");
 
             int choice = prompts.readInt("Choose: ");
-            switch (choice){
+            switch (choice) {
                 case 1:
                     start();
                     break;
-                case 2:
+                case 0:
                     System.out.println("Thank you!");
                     appRun = false;
                     break;
             }
         }
+    }
+
+    public void start() {
 
         boolean appRunning = true;
-        // Create the active cart for this session
+        // Main menu
         while (appRunning) {
-            System.out.println(
-                    """ 
-                            == Welcome to Oakberry ==
-                            1- Add a Bowl
-                            2- Add a Drink
-                            3- Add a side
-                            4- View Current Order
-                            5- Checkout
-                            6- Exit
-                            Please choose an option: \s""");
+            System.out.println("""
+                    ╭────────────────────────────────────────╮
+                    │                                        │
+                    │          == Welcome to Oakberry ==     │
+                    │          1- Add a Bowl                 │
+                    │          2- Add a Drink                │
+                    │          3- Add a Side                 │
+                    │          4- View Current Order         │
+                    │          5- Checkout                   │
+                    │          6- Exit                       │
+                    │                                        │
+                    ╰────────────────────────────────────────╯
+                    """);
 
             int menuChoice = prompts.readInt("Choose: ");
 
@@ -112,18 +90,23 @@ public class UI {
         }
     }
 
+    // Create A Acai bowl menu
     private void acaiMenu(Order order) {
-
+        // prompt user to select a size
         Size chosenSize = null;
         while (chosenSize == null) {
-            System.out.println(
-                    """ 
-                            == Select Size ==
-                            1) Classic   (12 oz)
-                            2) Works     (16 oz)
-                            3) The Oak   (20 oz)
-                            Please choose an option: \s""");
-
+            System.out.println("""
+                    ╭────────────────────────────────────────╮
+                    │             == Select Size ==          │
+                    ├────────────────────────────────────────┤
+                    │                                        │
+                    │          1) Classic   (12 oz)          │
+                    │          2) Works     (16 oz)          │
+                    │          3) The Oak   (20 oz)          │
+                    │                                        │
+                    ╰────────────────────────────────────────╯
+                    """);
+            // Input goes to input validation so user inputs an integer
             int choice = prompts.readInt("Choose: ");
 
 
@@ -147,12 +130,20 @@ public class UI {
             }
 
         }
+        // prompt a user to select base for bowl
         BaseType chosenBase = null;
         while (chosenBase == null) {
-            System.out.println("== Select Base ==");
-            System.out.println("1) " + BaseType.STANDARD.getAcaiBase() + " " + "(+$" + BaseType.STANDARD.getAcaiBaseUpcharge() + ")");
-            System.out.println("2) " + BaseType.GREEN_WELLNESS.getAcaiBase() + " " + "(+$" + BaseType.GREEN_WELLNESS.getAcaiBaseUpcharge() + ")");
-            System.out.println("3) " + BaseType.IM8_MIXED_BERRY.getAcaiBase() + " " + "(+$" + BaseType.IM8_MIXED_BERRY.getAcaiBaseUpcharge() + ")");
+            System.out.println("""
+                    ╭────────────────────────────────────────╮
+                    │             == Select Base ==          │
+                    ├────────────────────────────────────────┤
+                    │                                        │
+                    │     1) Acai (+$0)                      │
+                    │     2) Acai + Green-Superfood (+$1.50) │
+                    │     3) Acai + I*M*8 Berry     (+$1.50) │
+                    │                                        │
+                    ╰────────────────────────────────────────╯
+                    """);
             int choice = prompts.readInt("Choose: ");
 
 
@@ -175,21 +166,24 @@ public class UI {
                     System.out.println("Invalid selection. Please try again.");
             }
         }
+        // new bowl created withe selected base and size
         AcaiBowl acaiBowl = new AcaiBowl(chosenSize, chosenBase);
 
-        System.out.println(" Regular Toppings ");
+        System.out.println("""
+                ╭────────────────────────────────────────╮
+                │           == Regular Toppings ==       │
+                ╰────────────────────────────────────────╯
+                """);
         System.out.println("Type the number to add. Type 0 when done.");
         while (true) {
-            // Display the numbered menu
-
+            // Display the numbered menu for regular toppings
 
             for (int i = 0; i < RegularTopping.MENU.size(); i++) {
                 System.out.println((i + 1) + ")" + RegularTopping.MENU.get(i).getName());
             }
             System.out.println("0) Done");
-
+            // Input validation checks if user inputs; integer , not String character or number to high or low
             int choice = prompts.readInt("Choose: ");
-
 
 
             if (choice == 0)
@@ -200,14 +194,19 @@ public class UI {
                 continue;
             }
             RegularTopping toppingChoice = RegularTopping.MENU.get(choice - 1);
+            // add to bowl!
             acaiBowl.addTopping(toppingChoice);
             System.out.println("Added: " + toppingChoice.getName());
 
 
         }
-        System.out.println(" Premium Toppings ");
+        System.out.println("""
+                ╭────────────────────────────────────────╮
+                │           == Premium Toppings ==       │
+                ╰────────────────────────────────────────╯
+                """);
         System.out.println("Type the number to add. Type 0 when done.");
-
+        // loops through enums to display ordered premium topping list
         PremiumToppingMenu[] premiumToppings = PremiumToppingMenu.values();
         while (true) {
             for (int i = 0; i < premiumToppings.length; i++) {
@@ -215,7 +214,7 @@ public class UI {
                         " (+$" + premiumToppings[i].getCategory().priceFor(chosenSize) + ")");
             }
             System.out.println("0) Done");
-
+            // Input validation checks if user inputs; integer , not String character or number to high or low
             int choice = prompts.readInt("Choose: ");
 
 
@@ -233,7 +232,7 @@ public class UI {
 
         }
 
-
+        // Prompt user for hemp boost add on
         if (prompts.inputYesNo("Add Hemp Seed Boost? (y/n): ")) {
             acaiBowl.setHempBoost(true);
             System.out.println("Hemp Boost Added!");
@@ -246,11 +245,17 @@ public class UI {
 
     }
 
+    // display drink menu
     private void drinkMenu(Order order) {
         DrinkCategory choosenCategory = null;
         DrinkCategory[] categories = DrinkCategory.values();
         while (choosenCategory == null) {
-            System.out.println("== Select a drink Type ==");
+            // loops through drink category enum to display ordered premium topping list
+            System.out.println("""
+                    ╭────────────────────────────────────────╮
+                    │          == Select a Drink Type ==     │
+                    ╰────────────────────────────────────────╯
+                    """);
             for (int i = 0; i < categories.length; i++) {
                 System.out.println((i + 1) + ")" + categories[i].getDisplayName());
             }
@@ -268,6 +273,7 @@ public class UI {
             }
             choosenCategory = categories[choice - 1];
         }
+        // must choose a flavor
         if (choosenCategory == null) {
             System.out.println("Drink cancelled.");
             return;
@@ -275,13 +281,17 @@ public class UI {
 
         Size chosenSize = null;
         while (chosenSize == null) {
-            System.out.println(
-                    """ 
-                            == Select Size ==
-                            1) Classic   (12 oz)
-                            2) Works     (16 oz)
-                            3) The Oak   (20 oz)
-                            Please choose an option: \s""");
+            System.out.println("""
+                    ╭────────────────────────────────────────╮
+                    │             == Select Size ==          │
+                    ├────────────────────────────────────────┤
+                    │                                        │
+                    │          1) Classic   (12 oz)          │
+                    │          2) Works     (16 oz)          │
+                    │          3) The Oak   (20 oz)          │
+                    │                                        │
+                    ╰────────────────────────────────────────╯
+                    """);
 
             int choice = prompts.readInt("Choose: ");
 
@@ -305,15 +315,19 @@ public class UI {
             }
 
         }
+        // Initialize List for flavors
         List<DrinkFlavor> flavors = DrinkFlavor.flavorsFor(choosenCategory);
 
         DrinkFlavor chosenFlavor = null;
+        // loop through flavors
         while (chosenFlavor == null) {
             System.out.println("== Pick a " + choosenCategory.getDisplayName() + " ==");
             for (int i = 0; i < flavors.size(); i++) {
                 System.out.println((i + 1) + ")" + flavors.get(i).getDisplayName());
             }
             System.out.println("0) Done");
+
+            // prompt user for flavor choice
 
             int choice = prompts.readInt("Choose: ");
 
@@ -327,6 +341,7 @@ public class UI {
             chosenFlavor = flavors.get(choice - 1);
 
         }
+        // must choose a size
         if (chosenFlavor == null) {
             System.out.println("Drink cancelled.");
             return;
@@ -341,7 +356,11 @@ public class UI {
 
     private void addSide(Order order) {
         SideType[] sides = SideType.values();
-        System.out.println("== Add a Side ==");
+        System.out.println("""
+                ╭────────────────────────────────────────╮
+                │             == Add a Side ==           │
+                ╰────────────────────────────────────────╯
+                """);
         for (int i = 0; i < sides.length; i++) {
             System.out.println((i + 1) + ")" + sides[i].getDisplayName());
         }
@@ -352,7 +371,7 @@ public class UI {
 
 
         if (choice == 0)
-           return;
+            return;
 
         if (choice < 1 || choice > sides.length) {
             System.out.println("Invalid Choice");
@@ -366,16 +385,17 @@ public class UI {
     }
 
 
-
-
-
     private void displayCart(Order order) {
         if (order.isEmpty()) {
             System.out.println("Your cart is empty");
             return;
 
         }
-        System.out.println("=== Your Order ===");
+        System.out.println("""
+                ╭────────────────────────────────────────╮
+                │             === Your Order ===         │
+                ╰────────────────────────────────────────╯
+                """);
         for (OrderItem item : order.getItems()) {
             System.out.println(item.getDescription() + " -$" + item.getPrice());
         }
@@ -387,17 +407,25 @@ public class UI {
             System.out.println("Your cart is empty");
             return;
         }
-        System.out.println("========================================");
-        System.out.println("            Oakberry Order Summary     " );
-        System.out.println("========================================");
-        System.out.println();
+
+        System.out.println("""
+            ╭────────────────────────────────────────╮
+            │          Oakberry Order Summary        │
+            ├────────────────────────────────────────┤""");
+
         for (OrderItem item : order.getItems()) {
-            System.out.println(item.getDescription() + " -$" + item.getPrice());
+            String details = item.getDescription().replace("\n", "\n   ");
+            System.out.println("│ • " + details + " (" + PromptHelper.money(item.getPrice()) + ")      │");
         }
-        System.out.println("----------------------------------------");
-        System.out.println("Total: " + PromptHelper.money(order.getTotal()));
-        System.out.println("1) confirm order");
-        System.out.println("2) cancel");
+
+        System.out.println("├────────────────────────────────────────┤");
+        System.out.println("│ Total: " + PromptHelper.money(order.getTotal()) + "        |");
+        System.out.println("""
+            ╰────────────────────────────────────────╯
+             1) Confirm Order
+             2) Cancel
+            """);
+
         int UserChoice = prompts.readInt("Choose: ");
 
         if (UserChoice == 1){
@@ -408,12 +436,7 @@ public class UI {
             System.out.println("Order canceled");
             order.clear();
         }
-
-
-
     }
-
-
 
 
 }
