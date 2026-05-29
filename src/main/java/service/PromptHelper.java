@@ -3,21 +3,22 @@ package service;
 import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+// helps class for input validation
 public class PromptHelper {
+    // use same scanner for ui and this class
     private final Scanner theScanner;
 
     public PromptHelper( Scanner theScanner) {
         this.theScanner = theScanner;
 
     }
-
+    // fixes money output
     public static String money(BigDecimal amount) {
         return "$" + amount.setScale(2, java.math.RoundingMode.HALF_UP);
     }
 
 
-
+ // makes sure input is not a string
     public  int readInt(String prompt){
 
         while (true){
@@ -34,7 +35,7 @@ public class PromptHelper {
 
         }
     }
-
+// makes sure user on inputs available options
     public boolean inputYesNo(String prompt){
 
         while (true){

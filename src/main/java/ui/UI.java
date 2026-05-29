@@ -365,12 +365,13 @@ public class UI {
                 │             == Add a Side ==           │
                 ╰────────────────────────────────────────╯
                 """);
+        // creates side menu
         for (int i = 0; i < sides.length; i++) {
             System.out.println((i + 1) + ")" + sides[i].getDisplayName());
         }
         System.out.println("0) Done");
 
-
+        // prompt user to choose side
         int choice = prompts.readInt("Choose: ");
 
 
@@ -388,7 +389,7 @@ public class UI {
         System.out.println("Total: " + PromptHelper.money(order.getTotal()));
     }
 
-
+    // display to the user what the  current orderlist is
     private void displayCart(Order order) {
         if (order.isEmpty()) {
             System.out.println("Your cart is empty");
@@ -405,7 +406,7 @@ public class UI {
         }
         System.out.println("Total: " + PromptHelper.money(order.getTotal()));
     }
-
+    // allow user to confirm order and check out ( save receipt to file)
     private void checkOut(Order order) {
         if (order.isEmpty()) {
             System.out.println("Your cart is empty");

@@ -2,7 +2,7 @@ package com.pluralsight.enums;
 
 import java.math.BigDecimal;
 import java.util.Map;
-
+// Defines the available premium topping category and their price per size
 public enum PremiumCategory {
     NUT_BUTTER(Map.of(Size.SMALL, new BigDecimal("1.00"),
             Size.MEDIUM, new BigDecimal("1.50"),

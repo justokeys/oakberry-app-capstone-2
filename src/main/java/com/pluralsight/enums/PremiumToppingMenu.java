@@ -1,7 +1,7 @@
 package com.pluralsight.enums;
 
 import com.pluralsight.toppings.PremiumTopping;
-
+// Defines the available premium toppings and their fixed category
 public enum PremiumToppingMenu {
     ALMOND_BUTTER("Almond Butter", PremiumCategory.NUT_BUTTER),
     WHEY_PROTEIN("Whey Protein", PremiumCategory.PROTEIN),
