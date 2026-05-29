@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class UI {
     private final Scanner thescanner = new Scanner(System.in);
     private final Order currentOrder = new Order();
+    private final PromptHelper prompts = new PromptHelper(thescanner);
 
 
     public void start() {
@@ -28,8 +29,8 @@ public class UI {
                             6- Exit
                             Please choose an option: \s""");
 
-            int menuChoice = thescanner.nextInt();
-            thescanner.nextLine();
+            int menuChoice = prompts.readInt("Choose: ");
+
             switch (menuChoice) {
                 case 1:
                     acaiMenu(currentOrder);
@@ -69,8 +70,8 @@ public class UI {
                             3) The Oak   (20 oz)
                             Please choose an option: \s""");
 
-            int choice = thescanner.nextInt();
-            thescanner.nextLine();
+            int choice = prompts.readInt("Choose: ");
+
 
             switch (choice) {
                 case 1:
@@ -98,8 +99,8 @@ public class UI {
             System.out.println("1) " + BaseType.STANDARD.getAcaiBase() + " " + "(+$" + BaseType.STANDARD.getAcaiBaseUpcharge() + ")");
             System.out.println("2) " + BaseType.GREEN_WELLNESS.getAcaiBase() + " " + "(+$" + BaseType.GREEN_WELLNESS.getAcaiBaseUpcharge() + ")");
             System.out.println("3) " + BaseType.IM8_MIXED_BERRY.getAcaiBase() + " " + "(+$" + BaseType.IM8_MIXED_BERRY.getAcaiBaseUpcharge() + ")");
-            int choice = thescanner.nextInt();
-            thescanner.nextLine();
+            int choice = prompts.readInt("Choose: ");
+
 
             switch (choice) {
                 case 1:
@@ -132,9 +133,9 @@ public class UI {
                 System.out.println((i + 1) + ")" + RegularTopping.MENU.get(i).getName());
             }
             System.out.println("0) Done");
-            System.out.println("Choose: ");
-            int choice = thescanner.nextInt();
-            thescanner.nextLine();
+
+            int choice = prompts.readInt("Choose: ");
+
 
 
             if (choice == 0)
@@ -160,9 +161,9 @@ public class UI {
                         " (+$" + premiumToppings[i].getCategory().priceFor(chosenSize) + ")");
             }
             System.out.println("0) Done");
-            System.out.println("Choose: ");
-            int choice = thescanner.nextInt();
-            thescanner.nextLine();
+
+            int choice = prompts.readInt("Choose: ");
+
 
             if (choice == 0)
                 break;
@@ -177,9 +178,9 @@ public class UI {
 
 
         }
-        System.out.println("Add Hemp Seed Boost? (y/n): ");
-        String hempChoice = thescanner.nextLine().trim().toLowerCase();
-        if (hempChoice.equals("y")) {
+
+
+        if (prompts.inputYesNo("Add Hemp Seed Boost? (y/n): ")) {
             acaiBowl.setHempBoost(true);
             System.out.println("Hemp Boost Added!");
         }
@@ -200,9 +201,9 @@ public class UI {
                 System.out.println((i + 1) + ")" + categories[i].getDisplayName());
             }
             System.out.println("0) Done");
-            System.out.println("Choose: ");
-            int choice = thescanner.nextInt();
-            thescanner.nextLine();
+
+            int choice = prompts.readInt("Choose: ");
+
 
             if (choice == 0)
                 break;
@@ -228,8 +229,7 @@ public class UI {
                             3) The Oak   (20 oz)
                             Please choose an option: \s""");
 
-            int choice = thescanner.nextInt();
-            thescanner.nextLine();
+            int choice = prompts.readInt("Choose: ");
 
             switch (choice) {
                 case 1:
@@ -260,9 +260,8 @@ public class UI {
                 System.out.println((i + 1) + ")" + flavors.get(i).getDisplayName());
             }
             System.out.println("0) Done");
-            System.out.println("Choose: ");
-            int choice = thescanner.nextInt();
-            thescanner.nextLine();
+
+            int choice = prompts.readInt("Choose: ");
 
             if (choice == 0)
                 break;
@@ -293,9 +292,10 @@ public class UI {
             System.out.println((i + 1) + ")" + sides[i].getDisplayName());
         }
         System.out.println("0) Done");
-        System.out.println("Choose: ");
-        int choice = thescanner.nextInt();
-        thescanner.nextLine();
+
+
+        int choice = prompts.readInt("Choose: ");
+
 
         if (choice == 0)
            return;
@@ -325,7 +325,7 @@ public class UI {
         for (OrderItem item : order.getItems()) {
             System.out.println(item.getDescription() + " -$" + item.getPrice());
         }
-        System.out.println("Total: " + order.getTotal() );
+        System.out.println("Total: " + PromptHelper.money(order.getTotal()));
     }
 
     private void checkOut(Order order) {
@@ -344,10 +344,9 @@ public class UI {
         System.out.println("Total: " + PromptHelper.money(order.getTotal()));
         System.out.println("1) confirm order");
         System.out.println("2) cancel");
-        int userchoice = thescanner.nextInt();
-        thescanner.nextLine();
+        int UserChoice = prompts.readInt("Choose: ");
 
-        if (userchoice == 1){
+        if (UserChoice == 1){
             RecieptService.saveReceipt(order);
             order.clear();
         }
