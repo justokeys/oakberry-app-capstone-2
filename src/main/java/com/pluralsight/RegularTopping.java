@@ -1,6 +1,5 @@
-package com.pluralsight.toppings;
+package com.pluralsight;
 
-import com.pluralsight.Topping;
 import com.pluralsight.enums.Size;
 
 import java.math.BigDecimal;

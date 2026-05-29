@@ -3,8 +3,8 @@ package ui;
 import com.pluralsight.*;
 import com.pluralsight.enums.*;
 import com.pluralsight.Side;
-import com.pluralsight.toppings.PremiumTopping;
-import com.pluralsight.toppings.RegularTopping;
+import com.pluralsight.PremiumTopping;
+import com.pluralsight.RegularTopping;
 import service.PromptHelper;
 import service.RecieptService;
 
