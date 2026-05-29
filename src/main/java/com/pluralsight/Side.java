@@ -2,8 +2,8 @@ package com.pluralsight;
 
 import java.math.BigDecimal;
 
-public class Side extends Item{
-    private SideType type;
+public class Side extends Item {
+    private final SideType type;
 
 
     public Side(SideType type) {

@@ -7,25 +7,19 @@ import java.util.Map;
 
 public class AcaiBowl extends Item {
 
-    private final List<Topping> toppings;
-    private final BaseType base;
-    private boolean hempBoost;
-
     private static final Map<Size, BigDecimal> HEMP_FEES = Map.of(
             Size.SMALL, new BigDecimal("1.00"),
             Size.MEDIUM, new BigDecimal("1.50"),
             Size.LARGE, new BigDecimal("2.00")
     );
-
     private static final Map<Size, BigDecimal> BASE_PRICES = Map.of(
             Size.SMALL, new BigDecimal("9.00"),
             Size.MEDIUM, new BigDecimal("10.00"),
             Size.LARGE, new BigDecimal("12.00")
     );
-
-    public void setHempBoost(boolean hempBoost) {
-        this.hempBoost = hempBoost;
-    }
+    private final List<Topping> toppings;
+    private final BaseType base;
+    private boolean hempBoost;
 
     public AcaiBowl(Size size, BaseType base) {
         super("Acai Bowl", size);
@@ -33,7 +27,6 @@ public class AcaiBowl extends Item {
         this.toppings = new ArrayList<>();
         this.hempBoost = false;
     }
-
 
     public BaseType getBase() {
         return base;
@@ -47,7 +40,6 @@ public class AcaiBowl extends Item {
         toppings.add(topping);
 
     }
-
 
     @Override
     public BigDecimal getPrice() {
@@ -65,6 +57,10 @@ public class AcaiBowl extends Item {
 
     public boolean isHempBoost() {
         return hempBoost;
+    }
+
+    public void setHempBoost(boolean hempBoost) {
+        this.hempBoost = hempBoost;
     }
 
     @Override

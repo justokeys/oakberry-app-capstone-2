@@ -4,10 +4,8 @@ package com.pluralsight;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Formattable;
 import java.util.List;
 
 public class Order {
@@ -25,27 +23,28 @@ public class Order {
 
         return this.orderTime;
     }
-    public void addItem(OrderItem item){
-         items.add(item);
+
+    public void addItem(OrderItem item) {
+        items.add(item);
     }
 
-    public List<OrderItem> getItems(){
+    public List<OrderItem> getItems() {
         return Collections.unmodifiableList(items);
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return this.items.isEmpty();
     }
 
-    public BigDecimal getTotal(){
+    public BigDecimal getTotal() {
         BigDecimal total = BigDecimal.ZERO;
-        for (OrderItem item : items){
-           total = total.add(item.getPrice());
+        for (OrderItem item : items) {
+            total = total.add(item.getPrice());
         }
         return total;
     }
 
-    public void removeItem(int index){
+    public void removeItem(int index) {
         items.remove(index);
     }
 

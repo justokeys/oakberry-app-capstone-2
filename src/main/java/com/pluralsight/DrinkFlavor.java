@@ -40,14 +40,6 @@ public enum DrinkFlavor {
         this.category = drinkCategory;
     }
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public DrinkCategory getCategory() {
-        return category;
-    }
-
     public static List<DrinkFlavor> flavorsFor(DrinkCategory category) {
         List<DrinkFlavor> matches = new ArrayList<>();
 
@@ -57,6 +49,14 @@ public enum DrinkFlavor {
             }
         }
         return matches;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public DrinkCategory getCategory() {
+        return category;
     }
 
 

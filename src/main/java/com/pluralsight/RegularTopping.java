@@ -1,14 +1,9 @@
 package com.pluralsight;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class RegularTopping extends Topping {
-    public RegularTopping( String name) {
-        super(name);
-    }
     public static final List<RegularTopping> MENU = List.of(
             new RegularTopping("Strawberry"),
             new RegularTopping("Banana"),
@@ -24,11 +19,12 @@ public class RegularTopping extends Topping {
             new RegularTopping("Honey"),
             new RegularTopping("Goji Berries"),
             new RegularTopping("Vegan Granola"),
-            new RegularTopping("Milk Powder"),
-            new RegularTopping("Peanut Butter")
-
+            new RegularTopping("Milk Powder")
     );
 
+    public RegularTopping(String name) {
+        super(name);
+    }
 
     @Override
     BigDecimal getPriceForSize(Size size) {

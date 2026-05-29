@@ -1,18 +1,17 @@
 package ui;
 
 import com.pluralsight.*;
+import service.PromptHelper;
 import service.RecieptService;
 
-import java.math.BigDecimal;
+
 import java.util.List;
 import java.util.Scanner;
-
-import static service.RecieptService.saveReceipt;
 
 public class UI {
     private final Scanner thescanner = new Scanner(System.in);
     private final Order currentOrder = new Order();
-    private boolean AppRunning;
+
 
     public void start() {
         boolean appRunning = true;
@@ -96,9 +95,9 @@ public class UI {
         BaseType chosenBase = null;
         while (chosenBase == null) {
             System.out.println("== Select Base ==");
-            System.out.println("1)" + BaseType.STANDARD.getAcaiBase() + " " + "(+$" + BaseType.STANDARD.getAcaiBaseUpcharge() + ")");
-            System.out.println(BaseType.GREEN_WELLNESS.getAcaiBase() + " " + "(+$" + BaseType.GREEN_WELLNESS.getAcaiBaseUpcharge() + ")");
-            System.out.println(BaseType.IM8_MIXED_BERRY.getAcaiBase() + " " + "(+$" + BaseType.IM8_MIXED_BERRY.getAcaiBaseUpcharge() + ")");
+            System.out.println("1) " + BaseType.STANDARD.getAcaiBase() + " " + "(+$" + BaseType.STANDARD.getAcaiBaseUpcharge() + ")");
+            System.out.println("2) " + BaseType.GREEN_WELLNESS.getAcaiBase() + " " + "(+$" + BaseType.GREEN_WELLNESS.getAcaiBaseUpcharge() + ")");
+            System.out.println("3) " + BaseType.IM8_MIXED_BERRY.getAcaiBase() + " " + "(+$" + BaseType.IM8_MIXED_BERRY.getAcaiBaseUpcharge() + ")");
             int choice = thescanner.nextInt();
             thescanner.nextLine();
 
@@ -187,7 +186,7 @@ public class UI {
 
         order.addItem(acaiBowl);
 
-        System.out.println("Sub total: " + order.getTotal());
+        System.out.println("Total: " + PromptHelper.money(order.getTotal()));
 
 
     }
@@ -282,7 +281,7 @@ public class UI {
         Drink drink = new Drink(chosenSize, chosenFlavor);
         order.addItem(drink);
         System.out.println("✓" + drink.getDescription() + " added! - $" + drink.getPrice());
-        System.out.println("Sub total: " + order.getTotal());
+        System.out.println("Total: " + PromptHelper.money(order.getTotal()));
 
 
     }
@@ -309,7 +308,7 @@ public class UI {
 
         order.addItem(chosenSide);
         System.out.println("✓" + chosenSide.getDescription() + " added! - $" + chosenSide.getPrice());
-        System.out.println("Sub total: " + order.getTotal());
+        System.out.println("Total: " + PromptHelper.money(order.getTotal()));
     }
 
 
@@ -342,10 +341,11 @@ public class UI {
             System.out.println(item.getDescription() + " -$" + item.getPrice());
         }
         System.out.println("----------------------------------------");
-        System.out.println("Total: " + order.getTotal() );
+        System.out.println("Total: " + PromptHelper.money(order.getTotal()));
         System.out.println("1) confirm order");
         System.out.println("2) cancel");
         int userchoice = thescanner.nextInt();
+        thescanner.nextLine();
 
         if (userchoice == 1){
             RecieptService.saveReceipt(order);

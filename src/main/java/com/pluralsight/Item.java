@@ -1,7 +1,5 @@
 package com.pluralsight;
 
-import java.math.BigDecimal;
-
 public abstract class Item implements OrderItem {
     private final String name;
 
@@ -18,7 +16,7 @@ public abstract class Item implements OrderItem {
     }
 
 
-    public Size getSize(){
+    public Size getSize() {
         return this.size;
     }
 }

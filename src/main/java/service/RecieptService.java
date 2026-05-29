@@ -11,32 +11,20 @@ import java.time.format.DateTimeFormatter;
 public class RecieptService {
     public static void saveReceipt(Order order) {
 
-
         try {
             BufferedWriter receiptWriter = getBufferedWriter(order);
 
             receiptWriter.close();
 
-
         } catch (Exception e) {
             System.out.println("Error Reading file");
 
         }
-        // generate filename using current date/time (yyyyMMdd-HHmmss.txt)
-        // create a FileWriter and wrap in BufferedWriter (src/main/resources/receipts)
 
-        // loop through all order items
-        //   - write the items to the to reciept
-
-        //write total cost
-
-        // close BufferedWriter
-        // handle IOException with error message
     }
-
     private static BufferedWriter getBufferedWriter(Order order) throws IOException {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
-        String filename = "src/main/resources/receipts" + order.getOrderTime().format(fmt);
+        String filename = "src/main/resources/receipts/" + order.getOrderTime().format(fmt) + ".txt";
         BufferedWriter receiptWriter = new BufferedWriter(new FileWriter(filename));
 
 
