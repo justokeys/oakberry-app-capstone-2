@@ -7,14 +7,68 @@ import service.RecieptService;
 
 import java.util.List;
 import java.util.Scanner;
-
+// All menu and user inputs performed in this class
 public class UI {
     private final Scanner thescanner = new Scanner(System.in);
     private final Order currentOrder = new Order();
+    // Initialize Prompt helper method for input validation -- pass in scanner
     private final PromptHelper prompts = new PromptHelper(thescanner);
 
+//public void newOrder(){
+//    boolean appIsRunning = true;
+//    while (appISRunning){
+//        System.out.println("""
+//    ╔════════════════════════════════════════╗
+//    ║                                        ║
+//    ║          🫐  O A K B E R R Y  🫐       ║
+//    ║           Açaí Bowls & More            ║
+//    ║                                        ║
+//    ╚════════════════════════════════════════╝
+//    """);
+//        System.out.println("1 - Start new order");
+//        System.out.println("0 - Exit");
+//
+//        int choice = prompts.readInt("Choose: ");
+//        switch (choice){
+//            case 1:
+//                start();
+//                break;
+//            case 2:
+//                System.out.println("Thank you!");
+//                appRunning = false;
+//                break;
+//        }
+//    }
+//}
 
     public void start() {
+
+        // Opening menu
+        boolean appRun = true;
+        while (appRun){
+            System.out.println("""
+    ╭────────────────────────────────────────╮
+    │                                        │
+    │            O A K B E R R Y             │
+    │           Açaí Bowls & More            │
+    │                                        │
+    ╰────────────────────────────────────────╯
+    """);
+            System.out.println("1 - Start new order");
+            System.out.println("0 - Exit");
+
+            int choice = prompts.readInt("Choose: ");
+            switch (choice){
+                case 1:
+                    start();
+                    break;
+                case 2:
+                    System.out.println("Thank you!");
+                    appRun = false;
+                    break;
+            }
+        }
+
         boolean appRunning = true;
         // Create the active cart for this session
         while (appRunning) {
